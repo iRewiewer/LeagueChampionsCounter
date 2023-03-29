@@ -1,0 +1,38 @@
+@font-face {
+    font-family: ShinGoProB;
+    src: url("Shin_Go_Pro_B.otf");
+}
+
+#title {
+    font-family: ShinGoProB;
+    font-size: 40px;
+}
+
+figure {
+    display: inline-block;
+}
+
+figcaption {
+    font-family: ShinGoProB;
+}
+
+img{
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+    transition: opacity 0.6s;
+}
+
+.selected{
+    opacity: 0.2;
+    filter: alpha(opacity = 40);
+    transition: opacity 0.6s;
+}
+
+.noselect {
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+}

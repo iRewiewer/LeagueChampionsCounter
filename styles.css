@@ -36,3 +36,19 @@ img{
     -webkit-user-drag: none;
     -webkit-user-select: none;
 }
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background: #010911;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #021325;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #02101f;
+}

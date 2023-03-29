@@ -29,7 +29,7 @@ img{
     transition: opacity 0.6s;
 }
 
-.noselect {
+.nodrag {
     user-select: none;
     -ms-user-select: none;
     -moz-user-select: none;

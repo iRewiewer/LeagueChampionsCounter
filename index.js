@@ -15,8 +15,8 @@ $(function() {
         }
 
         let figure = `<figure>` +
-        `<img id="${i + 1}" class="${selected} noselect" src="assets/img (${i + 1}).png"/>` +
-        `<figcaption class="${i + 1} noselect ${selected}">${champs[i]}</figcaption>` +
+        `<img id="${i + 1}" class="nodrag ${selected}" src="assets/img (${i + 1}).png"/>` +
+        `<figcaption class="nodrag ${i + 1} ${selected}">${champs[i]}</figcaption>` +
         `</figure>`
 
         $("#table").append(figure);

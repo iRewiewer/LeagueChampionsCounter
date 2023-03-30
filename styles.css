@@ -15,6 +15,7 @@ figure {
 img{
     width: 100px;
     height: 100px;
+    cursor: pointer;
     opacity: 1;
     transition: opacity 0.6s;
 }

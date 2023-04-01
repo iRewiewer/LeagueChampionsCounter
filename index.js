@@ -15,7 +15,7 @@ $(function() {
         }
 
         let figure = `<figure>` +
-        `<img id="${i + 1}" class="nodrag ${selected}" src="assets/img (${i + 1}).png"/>` +
+        `<img id="${i + 1}" class="nodrag ${selected}" src="assets/champs/img (${i + 1}).png"/>` +
         `<figcaption class="nodrag ${i + 1} ${selected}">${champs[i]}</figcaption>` +
         `</figure>`
 

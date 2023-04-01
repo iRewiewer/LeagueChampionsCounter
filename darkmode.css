@@ -6,5 +6,6 @@ body {
 }
 
 a:link, a:visited, a:hover, a:active {
-	color: #8899A6;
+	color: #e6f4ff !important;
+	text-decoration: none;
 }

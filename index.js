@@ -16,7 +16,7 @@ $(function() {
 
         let figure = `<figure>` +
         `<img id="${i + 1}" class="nodrag ${selected}" src="assets/champs/img (${i + 1}).png"/>` +
-        `<figcaption class="nodrag ${i + 1} ${selected}">${champs[i]}</figcaption>` +
+        `<figcaption class="nodrag ${i + 1} ${selected}"><a target="_blank" href="https://u.gg/lol/champions/${champs[i]}/build">${champs[i]}</a></figcaption>` +
         `</figure>`
 
         $("#table").append(figure);

@@ -1,11 +1,11 @@
 body {
 	background-color: #010A13 !important;
-	color: #e6f4ff !important;
-	margin: 50px !important;
+	color: #e6f4ff;
+	margin: 50px;
 	text-align: center;
 }
 
 a:link, a:visited, a:hover, a:active {
-	color: #e6f4ff !important;
+	color: #e6f4ff;
 	text-decoration: none;
 }

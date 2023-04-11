@@ -1,11 +1,90 @@
+/*=================== Misc ===================*/
 @font-face {
-    font-family: ShinGoProB;
+    font-family: "ShinGoProB";
     src: url("Shin_Go_Pro_B.otf");
 }
 
+:root {
+    --main-bg-color: #010A13;
+    --font: "ShinGoProB";
+}
+
+body {
+    margin: 0 !important;
+}
+
+/*=================== Navbar ===================*/
+
+nav {
+    height: 90px;
+    width: 100%;
+    background-color: #04111e;
+    border-bottom: 10px solid;
+    border-color: #071828 !important;
+    z-index: 1;
+    position: fixed;
+    font-family: var(--font);
+    font-size: 16px;
+}
+
+div#navmenu div{
+    display: inline-block;
+    height: 100%;
+}
+
+#selectionBtns {
+    float: left;
+    padding-left: 20px;
+}
+
+#selectionBtns label {
+    cursor: pointer;
+    margin-top: 7px;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
 #title {
-    font-family: ShinGoProB;
+    font-family: var(--font);
     font-size: 40px;
+}
+
+#miscBtns {
+    float: right;
+}
+
+#exportBtn {
+    position: relative;
+    margin-right: 50px;
+    margin-top: 25px;
+    font-size: 20px;
+
+    opacity: 0.2;
+}
+
+#exportBtn label {
+    /*cursor: pointer;*/
+}
+
+#directionalBtns {
+    margin-top: 16px;
+    margin-right: 30px;
+    float: right;
+}
+
+#directionalBtns label {
+    cursor: pointer;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/*=================== Table ===================*/
+
+#table {
+    padding-top: 110px;
+    margin: 0px 40px 0px 40px;
 }
 
 figure {
@@ -21,7 +100,7 @@ img{
 }
 
 figcaption {
-    font-family: ShinGoProB;
+    font-family: var(--font);
 }
 
 .selected{
@@ -31,11 +110,12 @@ figcaption {
 }
 
 #footer {
-    font-family: ShinGoProB;
+    font-family: var(--font);
     font-size: 14px;
     float: right;
     text-align: right;
     padding-bottom: 15px;
+    padding-right: 20px;
 }
 
 .nodrag {
@@ -45,6 +125,8 @@ figcaption {
     -webkit-user-drag: none;
     -webkit-user-select: none;
 }
+
+/*=================== Scrollbar ===================*/
 
 ::-webkit-scrollbar {
     width: 20px;

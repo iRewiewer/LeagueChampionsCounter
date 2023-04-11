@@ -4,15 +4,35 @@
         <link rel="icon" type="image/x-icon" href="./assets/favicon/favicon.ico">
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="darkmode.css">
+        <link rel="stylesheet" href="fabric-icons.css">
         <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
         <script src="index.js"></script>
     </head>
     <body>
-        <div id="title" class="nodrag"></div>
+        <nav>
+            <div id="navmenu">
+                <div id="selectionBtns">
+                    <label id="selectAllBtn" class="nodrag">Select All</label>
+                    <label id="deselectAllBtn" class="nodrag">Deselect All</label>
+                </div>
+                <div>
+                    <label id="title" class="nodrag"></label>
+                </div>
+                <div id="miscBtns">
+                    <div id="exportBtn">
+                        <label class="nodrag">Export</label>
+                    </div>
+                    <div id="directionalBtns">
+                        <label id="topBtn" class="nodrag ms-Icon ms-Icon-Up"></label>
+                        <label id="botBtn" class="nodrag ms-Icon ms-Icon-Down"></label>
+                    </div>
+                </div>
+            </div>
+        </nav>
         <div id="table" class="nodrag"></div>
         <div id="footer">
             <div class="nodrag">by iRewiewer</div>
-            <div class="nodrag">V1.4</div>
+            <div class="nodrag">V1.8</div>
         </div>
     </body>
 </html>

@@ -54,16 +54,21 @@ $(function() {
         $('html, body').animate({ scrollTop: $(document).height() }, 1500);
     });
 
-    /*
     $("#exportBtn").on("click", () => {
+        $("#exportBtn").css("pointer-events", "none").delay(2000).queue(function(){
+            $("#exportBtn").css("pointer-events", "auto");
+            $("#exportBtn").clearQueue();
+        });
+
         let champsToExport = []
         for(i = 1; i < champs.length; i++) {
             if(localStorage.getItem(champs[i]) == 0)
-                champsToExport += champs[i];
+                champsToExport += `${champs[i]}\n`;
         }
-        alert(champsToExport);
+
+        navigator.clipboard.writeText(`Champions Remaining:\n${champsToExport}`);
+        $("#export-popup").fadeIn(1000).fadeOut(1000);
     });
-    */
 
     UpdateTitle();
 })

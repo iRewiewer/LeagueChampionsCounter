@@ -59,12 +59,21 @@ div#navmenu div{
     margin-right: 50px;
     margin-top: 25px;
     font-size: 20px;
-
-    opacity: 0.2;
 }
 
 #exportBtn label {
-    /*cursor: pointer;*/
+    cursor: pointer;
+}
+
+#export-popup {
+    color: #49add5;
+    text-align: center;
+    font-size: 16px;
+    display: none;
+    position: absolute;
+    right: 100px;
+    top: 5.5px;
+    width: 200px;
 }
 
 #directionalBtns {
@@ -109,7 +118,7 @@ figcaption {
     transition: opacity 0.6s;
 }
 
-#footer {
+#footer {   
     font-family: var(--font);
     font-size: 14px;
     float: right;

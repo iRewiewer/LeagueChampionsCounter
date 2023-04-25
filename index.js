@@ -103,6 +103,38 @@ function UpdateTitle() {
         }
     }
 
+    // vanilla
     let title = `Champions left: ${count}`;
+    let flavour = '.';
+
+    $("#titleFlavour").css("visibility", "hidden");
+
+    switch(count)
+    {
+        case 0:
+        {
+            title = `Congratulations! You're done.`;
+            break;
+        }
+
+        case 69:
+        {
+            flavour = "nice.";
+            break;
+        }
+
+        case champs.length - 1:
+        {
+            flavour = "Long way to go..";
+            break;
+        }
+    }
+
+    if(flavour != '.')
+    {
+        $("#titleFlavour").css("visibility", "visible");
+    }
+
     $("#title").html(title);
+    $("#titleFlavour").html(flavour);
 }

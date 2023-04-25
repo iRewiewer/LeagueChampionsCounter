@@ -50,6 +50,10 @@ div#navmenu div{
     font-size: 40px;
 }
 
+#titleFlavour {
+    margin-top: -18px;
+}
+
 #miscBtns {
     float: right;
 }

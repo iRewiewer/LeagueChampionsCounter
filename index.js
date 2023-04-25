@@ -83,12 +83,12 @@ function SelectImages() {
     if($(this).hasClass("selected"))
     {
         $(this).removeClass("selected");
-        $(`figcaption.${$(this).attr("id")}`).removeClass("selected");
+        $(this).siblings("figcaption").removeClass("selected");
         localStorage.setItem($(this).attr('id'), 0);
     }
     else{
         $(this).addClass("selected");
-        $(`figcaption.${$(this).attr("id")}`).addClass("selected");
+        $(this).siblings("figcaption").addClass("selected");
         localStorage.setItem($(this).attr('id'), 1);
     }
 

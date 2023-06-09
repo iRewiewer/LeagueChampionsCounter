@@ -123,6 +123,12 @@ function UpdateTitle() {
             break;
         }
 
+        case champs.length / 2:
+        {
+            flavour = "Half down, half more to go.";
+            break;
+        }
+
         case champs.length - 1:
         {
             flavour = "Long way to go..";

@@ -3,8 +3,7 @@ from json import loads
 from tarfile import open as opentar
 from distutils.dir_util import copy_tree
 from shutil import rmtree
-from RenameChamps import RenameChamps
-from os import path, remove, listdir
+from os import path, remove, listdir, rename
 
 # Get latest version
 versionUrl = "https://ddragon.leagueoflegends.com/api/versions.json"
@@ -33,7 +32,30 @@ rmtree(f"./extracted/tmp")
 
 # Rename champions
 print(f"Renaming champions...")
-RenameChamps(latest)
+root = f"./extracted/{latest}"
+exceptions = {
+    "AurelionSol" : "Aurelion Sol",
+    "Belveth" : "Bel\'veth",
+    "Chogath" : "Cho\'gath", 
+    "DrMundo" : "Dr. Mundo",
+    "JarvanIV" : "Jarvan IV",
+    "Kaisa" : "Kai\'sa",
+    "Khazix" : "Kha\'Zix",
+    "KogMaw" : "Kog\'Maw",
+    "KSante" : "K\'Sante",
+    "LeeSin" : "Lee Sin",
+    "MasterYi" : "Master Yi",
+    "MissFortune" : "Miss Fortune",
+    "RekSai" : "Rek\'Sai",
+    "TahmKench" : "Tahm Kench",
+    "TwistedFate" : "Twisted Fate", 
+    "Velkoz" : 'Vel\'koz',
+    "MonkeyKing" : "Wukong",
+    "XinZhao" : "Xin Zhao"
+}
+
+for badName in exceptions.keys():
+    rename(f"{root}/{badName}.png", f"{root}/{exceptions[badName]}.png")
 
 # Updating champs JS
 rmtree("./assets/champs")
@@ -42,7 +64,7 @@ copy_tree(f"./extracted/{latest}", f"./assets/champs/")
 print("Updating champs JS...")
 
 for champ in listdir("./assets/champs"):
-    champ = champ[:-4]
+    champ = champ[:-4] # remove .png
     match champ:
         case "Bel'veth":
             champ = "Bel\\'veth"
@@ -60,7 +82,7 @@ for champ in listdir("./assets/champs"):
             champ = "Rek\\'Sai"
         case "Vel'koz":
             champ = "Vel\\'koz"
-    defChamps += f", '{champ}'" # remove .png
+    defChamps += f", '{champ}'"
 
 defChamps += "]"
 

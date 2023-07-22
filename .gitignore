@@ -2,3 +2,4 @@ extracted
 archives
 .vscode
 __pycache__
+debug.log

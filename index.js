@@ -110,16 +110,16 @@ function UpdateTitle() {
     if(count == 0)
         title = `Congratulations! You're done.`;
     if(count == 1)
-        flavour = "Cmonnn only one remaining go for ittt!!";
+        flavour = "Only one remaining go for ittt!!";
     if(count > 1 && count <= 10)
         flavour = "So close.. You can do it!!";
     if(count == 69)
         flavour = "nice.";
     if(count == champs.length / 2)
         flavour = "Half down, half more to go.";
-    if(count > champs.length / 2 && count > (champs.length / 2) + 5)
+    if(count > champs.length / 2 && count < (champs.length / 2) + 5)
         flavour = "Almost halfway thru";
-    if(count == champs.length - 1)
+    if(count > champs.length - 7)
         flavour = "Long way to go..";
 
     if(flavour != '.')

@@ -1,5 +1,3 @@
-let champs = ['', 'Aatrox', 'Ahri', 'Akali', 'Akshan', 'Alistar', 'Amumu', 'Anivia', 'Annie', 'Aphelios', 'Ashe', 'Aurelion Sol', 'Azir', 'Bard', 'Bel\'veth', 'Blitzcrank', 'Brand', 'Braum', 'Caitlyn', 'Camille', 'Cassiopeia', 'Cho\'gath', 'Corki', 'Darius', 'Diana', 'Draven', 'Dr. Mundo', 'Ekko', 'Elise', 'Evelynn', 'Ezreal', 'Fiddlesticks', 'Fiora', 'Fizz', 'Galio', 'Gangplank', 'Garen', 'Gnar', 'Gragas', 'Graves', 'Gwen', 'Hecarim', 'Heimerdinger', 'Illaoi', 'Irelia', 'Ivern', 'Janna', 'JarvanIV', 'Jax', 'Jayce', 'Jhin', 'Jinx', 'Kai\'sa', 'Kalista', 'Karma', 'Karthus', 'Kassadin', 'Katarina', 'Kayle', 'Kayn', 'Kennen', 'Kha\'Zix', 'Kindred', 'Kled', 'Kog\'Maw', 'K\'Sante', 'Leblanc', 'Lee Sin', 'Leona', 'Lillia', 'Lissandra', 'Lucian', 'Lulu', 'Lux', 'Malphite', 'Malzahar', 'Maokai', 'Master Yi', 'Milio', 'Miss Fortune', 'Mordekaiser', 'Morgana', 'Nami', 'Nasus', 'Nautilus', 'Neeko', 'Nidalee', 'Nilah', 'Nocturne', 'Nunu', 'Olaf', 'Orianna', 'Ornn', 'Pantheon', 'Poppy', 'Pyke', 'Qiyana', 'Quinn', 'Rakan', 'Rammus', 'Rek\'Sai', 'Rell', 'Renata', 'Renekton', 'Rengar', 'Riven', 'Rumble', 'Ryze', 'Samira', 'Sejuani', 'Senna', 'Seraphine', 'Sett', 'Shaco', 'Shen', 'Shyvana', 'Singed', 'Sion', 'Sivir', 'Skarner', 'Sona', 'Soraka', 'Swain', 'Sylas', 'Syndra', 'Tahm Kench', 'Taliyah', 'Talon', 'Taric', 'Teemo', 'Thresh', 'Tristana', 'Trundle', 'Tryndamere', 'Twisted Fate', 'Twitch', 'Udyr', 'Urgot', 'Varus', 'Vayne', 'Veigar', 'Vel\'koz', 'Vex', 'Vi', 'Viego', 'Viktor', 'Vladimir', 'Volibear', 'Warwick', 'Wukong', 'Xayah', 'Xerath', 'Xin Zhao', 'Yasuo', 'Yone', 'Yorick', 'Yuumi', 'Zac', 'Zed', 'Zeri', 'Ziggs', 'Zilean', 'Zoe', 'Zyra']
-
 $(function() {
     // Fill in all the champions
     let selected = "";
@@ -109,32 +107,20 @@ function UpdateTitle() {
 
     $("#titleFlavour").css("visibility", "hidden");
 
-    switch(count)
-    {
-        case 0:
-        {
-            title = `Congratulations! You're done.`;
-            break;
-        }
-
-        case 69:
-        {
-            flavour = "nice.";
-            break;
-        }
-
-        case champs.length / 2:
-        {
-            flavour = "Half down, half more to go.";
-            break;
-        }
-
-        case champs.length - 1:
-        {
-            flavour = "Long way to go..";
-            break;
-        }
-    }
+    if(count == 0)
+        title = `Congratulations! You're done.`;
+    if(count == 1)
+        flavour = "Cmonnn only one remaining go for ittt!!";
+    if(count > 1 && count <= 10)
+        flavour = "So close.. You can do it!!";
+    if(count == 69)
+        flavour = "nice.";
+    if(count == champs.length / 2)
+        flavour = "Half down, half more to go.";
+    if(count > champs.length / 2 && count > (champs.length / 2) + 5)
+        flavour = "Almost halfway thru";
+    if(count == champs.length - 1)
+        flavour = "Long way to go..";
 
     if(flavour != '.')
     {

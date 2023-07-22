@@ -1,6 +1,6 @@
 # LeagueChampionsCounter
 An utility website for tracking champions that you've won a game with for the game League of Legends.  
-It's useful if you're trying to do the "Jack of all Champs" challenge where you have you win with every single champion in the game.  
+It's useful if you're trying to do the challenges such as "Jack of all Champs", where you have you win with every single champion in the game.  
 Currently available at https://irewiewer.github.io/LeagueChampionsCounter/
 
 ## Preview

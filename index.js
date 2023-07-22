@@ -117,7 +117,7 @@ function UpdateTitle() {
         flavour = "nice.";
     if(count == champs.length / 2)
         flavour = "Half down, half more to go.";
-    if(count > champs.length / 2 && count > (champs.length / 2) + 5)
+    if(count > champs.length / 2 && count < (champs.length / 2) + 5)
         flavour = "Almost halfway thru";
     if(count == champs.length - 1)
         flavour = "Long way to go..";

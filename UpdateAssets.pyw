@@ -3,34 +3,36 @@ from json import loads
 from tarfile import open as opentar
 from distutils.dir_util import copy_tree
 from shutil import rmtree
-from os import path, remove, listdir, rename
+from os import path, remove, listdir, rename, mkdir
 
-# Get latest version
+# Get latest version #
 versionUrl = "https://ddragon.leagueoflegends.com/api/versions.json"
 latest = loads(get(versionUrl).content)[0]
 print(f"Found latest patch {latest}.")
 
-# Download archive
+# Download archive #
 url = f"https://ddragon.leagueoflegends.com/cdn/dragontail-{latest}.tgz"
 print(f"Downloading datadragon patch {latest}.tgz...")
 if path.isfile(f"./archives/{latest}.tgz"):
     remove(f"./archives/{latest}.tgz")
+if not path.isdir(f"archives"):
+    mkdir("archives")
 open(f"./archives/{latest}.tgz", "wb").write(get(url, allow_redirects = True).content)
 
-# Extract archive
+# Extract archive #
 print(f"Extracting...")
 file = opentar(f"./archives/{latest}.tgz")
 file.extractall(f'./extracted/tmp')
 file.close()
 
-# Remove unnecessary folders
+# Remove unnecessary folders #
 print(f"Removing unnecessary folders...")
 if path.isdir(f"./extracted/{latest}"):
     rmtree(f"./extracted/{latest}")
 copy_tree(f"./extracted/tmp/{latest}/img/champion", f"./extracted/{latest}")
 rmtree(f"./extracted/tmp")
 
-# Rename champions
+# Rename champions #
 print(f"Renaming champions...")
 root = f"./extracted/{latest}"
 exceptions = {
@@ -57,7 +59,7 @@ exceptions = {
 for badName in exceptions.keys():
     rename(f"{root}/{badName}.png", f"{root}/{exceptions[badName]}.png")
 
-# Updating champs JS
+# Updating champs JS #
 rmtree("./assets/champs")
 defChamps = "let champs = [''"
 copy_tree(f"./extracted/{latest}", f"./assets/champs/")

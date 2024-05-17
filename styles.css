@@ -253,6 +253,7 @@ figcaption {
     height: 70%;
     background-color: #010a13;
     color: #e6f4ff;
+    resize: none;
     padding-left: 8px;
     padding-top: 5px;
     font-size: 18px;

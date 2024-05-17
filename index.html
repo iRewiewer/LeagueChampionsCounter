@@ -25,13 +25,13 @@
             </div>
             <div id="miscBtns">
                 <div id="toggleBtns">
-                    <label style="padding-right: 10px" class="nodrag">Save to</label>
+                    <label style="padding-right: 9px" class="nodrag">Method</label>
                     <label id="toggleBtn" class="nodrag">File</label>
                 </div>
-                <div id="importBtn" style="padding-right: 15px">
+                <div id="importBtn" style="padding-left: 15px">
                     <input type="file" id="fileInput" style="display: none;" accept=".txt">
                     <span id="import-popup" class="nodrag">Import successful!</span>
-                    <label for="fileInput" class="nodrag">Import</label>
+                    <label id="importLabel" for="fileInput" class="nodrag">Import</label>
                 </div>
                 <div id="exportBtn">
                     <span id="export-popup" class="nodrag">Saved to clipboard!</span>
@@ -42,12 +42,19 @@
                     <label id="botBtn" class="nodrag ms-Icon ms-Icon-Down"></label>
                 </div>
             </div>
+            <div id="popupWindow">
+                <div id="popupContent">
+                    <p id="popupTitle">Paste in your champion data:</p>
+                    <textarea type="text" id="popupTextBox"></textarea>
+                    <label id="popupButton" class="nodrag">Submit</label>
+                </div>
+            </div>
         </div>
     </nav>
     <div id="table" class="nodrag"></div>
     <div id="footer">
         <div class="nodrag">by iRewiewer</div>
-        <div class="nodrag">V2.1.5</div>
+        <div class="nodrag">V2.1.6</div>
     </div>
 </body>
 

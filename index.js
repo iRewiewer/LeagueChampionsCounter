@@ -10,8 +10,10 @@ $(function () {
 
     if (localStorage.getItem("SaveMethod") == 1) {
         $("#toggleBtn").text("File").css("padding-left", "26px");
+        $("#importLabel").attr("for", "fileInput");
     } else {
         $("#toggleBtn").text("Clipboard").css("padding-right", "0px").css("padding-left", "40px");
+        $("#importLabel").attr("for", "");
     }
 
     for (i = 1; i < champs.length; i++) {
@@ -70,14 +72,41 @@ $(function () {
         $('html, body').animate({ scrollTop: $(document).height() }, 1500);
     });
 
-    // Import champions list
+    // Import champions via clipboard
+    $("#importBtn").on("click", () => {
+        $("#importBtn").css("pointer-events", "none").delay(500).queue(function () {
+            $("#importBtn").css("pointer-events", "auto");
+            $("#importBtn").clearQueue();
+        });
+
+        if (localStorage.getItem("SaveMethod") == 1) {
+            return;
+        }
+
+        $("#popupWindow").css("visibility", "visible");
+    });
+
+    $("#popupButton").on("click", () => {
+        _ImportChampions($("#popupTextBox").val());
+        $("#popupWindow").css("visibility", "hidden");
+    });
+
+    $(window).on("click", function (event) {
+        if ($(event.target).is("#popupWindow")) {
+            $("#popupWindow").css("visibility", "hidden");
+        }
+    });
+
+    // Import champions list via file
     $("#importBtn").on("change", (event) => {
         $("#importBtn").css("pointer-events", "none").delay(2000).queue(function () {
             $("#importBtn").css("pointer-events", "auto");
             $("#importBtn").clearQueue();
         });
 
-        $("#import-popup").text("Import successful!");
+        if (localStorage.getItem("SaveMethod") == 0) {
+            return;
+        }
 
         const file = event.target.files[0];
 
@@ -86,41 +115,7 @@ $(function () {
 
             // Read and check
             reader.onload = function (e) {
-                const content = e.target.result;
-
-                let containsAtLeastAChamp = false;
-                let champsSelectedNow = [];
-                let champsToBeSelected = [];
-                for (i = 1; i < champs.length; i++) {
-                    if (localStorage.getItem(champs[i]) == 1) {
-                        champsSelectedNow += champs[i];
-                    }
-                }
-
-                ClearLocalStorage();
-
-                // Select champs
-                for (i = 1; i < champs.length; i++) {
-                    if (!content.includes(champs[i])) {
-                        containsAtLeastAChamp = true;
-                        champsToBeSelected += champs[i];
-                        localStorage.setItem(champs[i], 1);
-                    }
-                }
-
-                // Error handling
-                if (!containsAtLeastAChamp) {
-                    $("#import-popup").text("Import failed");
-                }
-
-                if (champsSelectedNow === champsToBeSelected) {
-                    $("#import-popup").text("No changes");
-                }
-
-                // Update images and title
-                $("#import-popup").fadeIn(1000).fadeOut(1000);
-                UpdateImages();
-                UpdateTitle();
+                _ImportChampions(e.target.result);
             };
 
             reader.readAsText(file);
@@ -175,17 +170,64 @@ $(function () {
                 $(this).text("Clipboard").fadeIn(200).css("padding-right", "0px").css("padding-left", "40px");
             });
             localStorage.setItem("SaveMethod", 0);
+            $("#importLabel").attr("for", "");
         }
         else {
             $("#toggleBtn").fadeOut(200, function () {
                 $(this).text("File").fadeIn(200).css("padding-right", "26px");
             });
             localStorage.setItem("SaveMethod", 1);
+            $("#importLabel").attr("for", "fileInput");
         }
     });
 
     UpdateTitle();
 })
+
+function _ImportChampions(content) {
+    let champsSelectedNow = [];
+    let champsToBeSelected = [];
+    for (i = 1; i < champs.length; i++) {
+        if (localStorage.getItem(champs[i]) == 1) {
+            champsSelectedNow.push(champs[i]);
+        }
+    }
+
+    // Select champs
+    for (i = 1; i < champs.length; i++) {
+        if (!content.includes(champs[i])) {
+            champsToBeSelected.push(champs[i]);
+        }
+    }
+
+    // Error handling
+    $("#import-popup").text("Import successful!");
+
+    if (champs.length - 1 === champsToBeSelected.length) {
+        console.log("hallo")
+        $("#import-popup").text("Import failed").fadeIn(1000).fadeOut(1000);
+        return;
+    }
+
+    if (JSON.stringify(champsSelectedNow) === JSON.stringify(champsToBeSelected)) {
+        $("#import-popup").text("No changes");
+    }
+
+    // Change champions
+    ClearLocalStorage();
+
+    for (i = 1; i < champs.length; i++) {
+        if (!content.includes(champs[i])) {
+            localStorage.setItem(champs[i], 1);
+        }
+    }
+
+
+    // Update images and title
+    $("#import-popup").fadeIn(1000).fadeOut(1000);
+    UpdateImages();
+    UpdateTitle();
+}
 
 function UpdateImages() {
     for (i = 1; i < champs.length; i++) {
@@ -231,8 +273,13 @@ function UpdateTitle() {
 
     $("#titleFlavour").css("visibility", "hidden");
 
-    if (count == 0)
+    if (count == 0) {
         title = `Congratulations! You're done.`;
+        $("#title-block").css("padding-left", "360px");
+    }
+    else {
+        $("#title-block").css("padding-left", "380px");
+    }
     if (count == 1)
         flavour = "Only one remaining go for ittt!!";
     if (count > 1 && count <= 10)

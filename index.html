@@ -1,42 +1,54 @@
 <html>
-    <head>
-        <title>League Champions Counter</title>
-        <link rel="icon" type="image/x-icon" href="./assets/favicon/favicon.ico">
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="darkmode.css">
-        <link rel="stylesheet" href="fabric-icons.css">
-        <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-        <script src="defineChamps.js"></script>
-        <script src="index.js"></script>
-    </head>
-    <body>
-        <nav>
-            <div id="navmenu">
-                <div id="selectionBtns">
-                    <label id="selectAllBtn" class="nodrag">Select All</label>
-                    <label id="deselectAllBtn" class="nodrag">Deselect All</label>
+
+<head>
+    <title>League Champions Counter</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="darkmode.css">
+    <link rel="stylesheet" href="fabric-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <script src="defineChamps.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div id="navmenu">
+            <div id="selectionBtns">
+                <label id="selectAllBtn" class="nodrag">Select All</label>
+                <label id="deselectAllBtn" class="nodrag">Deselect All</label>
+            </div>
+            <div id="title-block">
+                <label id="title" class="nodrag"></label>
+                <br>
+                <div id="titleFlavour">.</div>
+            </div>
+            <div id="miscBtns">
+                <div id="toggleBtns">
+                    <label style="padding-right: 10px" class="nodrag">Save to</label>
+                    <label id="toggleBtn" class="nodrag">File</label>
                 </div>
-                <div>
-                    <label id="title" class="nodrag"></label>
-                    <br>
-                    <div id="titleFlavour">.</div>
+                <div id="importBtn" style="padding-right: 15px">
+                    <input type="file" id="fileInput" style="display: none;" accept=".txt">
+                    <span id="import-popup" class="nodrag">Import successful!</span>
+                    <label for="fileInput" class="nodrag">Import</label>
                 </div>
-                <div id="miscBtns">
-                    <div id="exportBtn">
-                        <span id="export-popup" class="nodrag">Saved to clipboard!</span>
-                        <label class="nodrag">Export</label>
-                    </div>
-                    <div id="directionalBtns">
-                        <label id="topBtn" class="nodrag ms-Icon ms-Icon-Up"></label>
-                        <label id="botBtn" class="nodrag ms-Icon ms-Icon-Down"></label>
-                    </div>
+                <div id="exportBtn">
+                    <span id="export-popup" class="nodrag">Saved to clipboard!</span>
+                    <label class="nodrag">Export</label>
+                </div>
+                <div id="directionalBtns">
+                    <label id="topBtn" class="nodrag ms-Icon ms-Icon-Up"></label>
+                    <label id="botBtn" class="nodrag ms-Icon ms-Icon-Down"></label>
                 </div>
             </div>
-        </nav>
-        <div id="table" class="nodrag"></div>
-        <div id="footer">
-            <div class="nodrag">by iRewiewer</div>
-            <div class="nodrag">V2.0.2</div>
         </div>
-    </body>
+    </nav>
+    <div id="table" class="nodrag"></div>
+    <div id="footer">
+        <div class="nodrag">by iRewiewer</div>
+        <div class="nodrag">V2.1.5</div>
+    </div>
+</body>
+
 </html>

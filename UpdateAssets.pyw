@@ -1,8 +1,7 @@
 from requests import get
 from json import loads
 from tarfile import open as opentar
-from distutils.dir_util import copy_tree
-from shutil import rmtree
+from shutil import rmtree, copytree
 from os import path, remove, listdir, rename, mkdir
 
 # Get latest version #
@@ -26,10 +25,12 @@ file.extractall(f'./extracted/tmp')
 file.close()
 
 # Remove unnecessary folders #
+# Remove unnecessary folders
 print(f"Removing unnecessary folders...")
-if path.isdir(f"./extracted/{latest}"):
-    rmtree(f"./extracted/{latest}")
-copy_tree(f"./extracted/tmp/{latest}/img/champion", f"./extracted/{latest}")
+extracted_path = f"./extracted/{latest}"
+if path.isdir(extracted_path):
+    rmtree(extracted_path)
+copytree(f"./extracted/tmp/{latest}/img/champion", extracted_path)
 rmtree(f"./extracted/tmp")
 
 # Rename champions #
@@ -62,7 +63,7 @@ for badName in exceptions.keys():
 # Updating champs JS #
 rmtree("./assets/champs")
 defChamps = "let champs = [''"
-copy_tree(f"./extracted/{latest}", f"./assets/champs/")
+copytree(f"./extracted/{latest}", f"./assets/champs/")
 print("Updating champs JS...")
 
 for champ in listdir("./assets/champs"):

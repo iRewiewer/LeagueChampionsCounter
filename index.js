@@ -2,6 +2,13 @@ $(function () {
     // Fill in all the champions
     let selected = "";
 
+    champs = [''].concat(
+        champs
+            .slice(1)                  // ignore the leading ''
+            .filter(Boolean)           // just in case, remove any other empty values
+            .sort((a, b) => a.localeCompare(b))
+    );
+
     // 1 = File; 0 = Clipboard;
     if (localStorage.getItem("SaveMethod") == null) {
         localStorage.setItem("SaveMethod", 1);
